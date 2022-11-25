@@ -1,10 +1,12 @@
 <h1><%= @list.name %></h1>
 <%= link_to 'Back', lists_path %>
 <%= link_to 'Create a new bookmark', new_list_bookmark_path(@list) %>
+<%#= cl_image_tag @list.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face %>
 <h2>List of bookmarks</h2>
 <ul>
 <% @list.bookmarks.each do |bookmark| %>
 <li>Movie: <%= Movie.find(bookmark.movie_id).title %>"<%= bookmark.comment %>""
+
 <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 </li>
 <% end %>
